@@ -30,6 +30,16 @@ Route::group([
 
 });
 
+Route::group([
+    'namespace' => 'App\Http\Controllers\User',
+    'middleware' => 'api'
+
+], function ($router) {
+
+    Route::post('users', 'IndexController');
+
+});
+
 /*
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
