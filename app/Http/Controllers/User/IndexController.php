@@ -2,12 +2,11 @@
 
 namespace App\Http\Controllers\User;
 
-use Illuminate\Http\Request;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Routing\Controller;
-use App\Http\Controllers\User\BaseController;
 use App\Models\User;
 
-class IndexController extends BaseController
+class IndexController extends Controller
 {
     /**
      * Create a new controller instance.
@@ -22,7 +21,7 @@ class IndexController extends BaseController
     /**
      * Show the application dashboard.
      *
-     * @return \Illuminate\Contracts\Support\Renderable
+     * @return JsonResponse
      */
     public function __invoke()
     {
