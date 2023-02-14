@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers\Hosting;
 
+use App\Http\Requests\Hosting\UpdateRequest;
 use App\Models\Hosting;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Routing\Controller;
 
-class IndexController extends Controller
+class UpdateController extends Controller
 {
     /**
      * Create a new controller instance.
@@ -23,12 +24,19 @@ class IndexController extends Controller
      *
      * @return JsonResponse
      */
-    public function __invoke()
+    public function __invoke(UpdateRequest $request, Hosting $hosting)
     {
-        $hostings = Hosting::all();
+        $data = $request->validated();
+        try{
+            $hosting->update($data);
+        }catch (\Exception $e){
+            $hosting = $e->getMessage();
+        }
+        $hosting->update($data);
+
         return response()->json([
             'success' => true,
-            'hostings' => $hostings
+            'hosting' => $hosting
         ], 200);
     }
 }

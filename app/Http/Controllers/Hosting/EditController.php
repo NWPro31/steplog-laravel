@@ -6,7 +6,7 @@ use App\Models\Hosting;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Routing\Controller;
 
-class IndexController extends Controller
+class EditController extends Controller
 {
     /**
      * Create a new controller instance.
@@ -23,12 +23,11 @@ class IndexController extends Controller
      *
      * @return JsonResponse
      */
-    public function __invoke()
+    public function __invoke(Hosting $hosting)
     {
-        $hostings = Hosting::all();
         return response()->json([
             'success' => true,
-            'hostings' => $hostings
+            'hostings' => $hosting
         ], 200);
     }
 }

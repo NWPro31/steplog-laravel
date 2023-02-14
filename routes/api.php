@@ -45,9 +45,10 @@ Route::group([
     'middleware' => 'api'
 
 ], function ($router) {
-
+    Route::get('hostings', 'IndexController');
     Route::post('hostings', 'StoreController');
-
+    Route::get('/hostings/{hosting}/edit', 'EditController');
+    Route::patch('/hostings/{product}', 'UpdateController');
 });
 
 /*
