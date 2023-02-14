@@ -48,7 +48,8 @@ Route::group([
     Route::get('hostings', 'IndexController');
     Route::post('hostings', 'StoreController');
     Route::get('/hostings/{hosting}/edit', 'EditController');
-    Route::patch('/hostings/{product}', 'UpdateController');
+    Route::patch('/hostings/{hosting}', 'UpdateController');
+    Route::delete('/hostings/{hosting}', 'DestroyController');
 });
 
 /*

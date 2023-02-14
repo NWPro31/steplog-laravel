@@ -2,12 +2,11 @@
 
 namespace App\Http\Controllers\Hosting;
 
-use App\Http\Requests\Hosting\UpdateRequest;
 use App\Models\Hosting;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Routing\Controller;
 
-class UpdateController extends Controller
+class DestroyController extends Controller
 {
     /**
      * Create a new controller instance.
@@ -24,15 +23,12 @@ class UpdateController extends Controller
      *
      * @return JsonResponse
      */
-    public function __invoke(UpdateRequest $request, Hosting $hosting)
+    public function __invoke(Hosting $hosting)
     {
-        $data = $request->validated();
-
-        $hosting = $hosting->update($data);
-
+        $hosting = $hosting->delete();
         return response()->json([
             'success' => true,
-            'hosting' => $hosting
+            'hostings' => $hosting
         ], 200);
     }
 }
