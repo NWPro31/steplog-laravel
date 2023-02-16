@@ -45,11 +45,20 @@ Route::group([
     'middleware' => 'api'
 
 ], function ($router) {
-    Route::get('hostings', 'IndexController');
-    Route::post('hostings', 'StoreController');
     Route::get('/hostings/{hosting}/edit', 'EditController');
     Route::patch('/hostings/{hosting}', 'UpdateController');
     Route::delete('/hostings/{hosting}', 'DestroyController');
+    Route::get('hostings', 'IndexController');
+    Route::post('hostings', 'StoreController');
+});
+
+Route::group([
+    'namespace' => 'App\Http\Controllers\Domain',
+    'middleware' => 'api'
+
+], function ($router) {
+    Route::get('domains', 'IndexController');
+    Route::post('domains', 'StoreController');
 });
 
 /*
