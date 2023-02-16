@@ -57,6 +57,9 @@ Route::group([
     'middleware' => 'api'
 
 ], function ($router) {
+    Route::get('/domains/{domain}/edit', 'EditController');
+    Route::patch('/domains/{domain}', 'UpdateController');
+    Route::delete('/domains/{domain}', 'DestroyController');
     Route::get('domains', 'IndexController');
     Route::post('domains', 'StoreController');
 });
