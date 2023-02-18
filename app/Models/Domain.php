@@ -10,4 +10,10 @@ class Domain extends Model
     use HasFactory;
 
     protected $guarded = [];
+
+    public function domainReg()
+    {
+        return $this->belongsTo(DomainReg::class, 'reg_id', 'id');
+    }
+
 }

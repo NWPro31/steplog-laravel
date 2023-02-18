@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Requests\Domain;
+namespace App\Http\Requests\DomainReg;
 
 use Illuminate\Foundation\Http\FormRequest;
 
@@ -25,11 +25,7 @@ class UpdateRequest extends FormRequest
     {
         return [
             'title' => 'required|string',
-            'price' => 'required|integer',
-            'price_extension' => 'required|integer',
-            'period' => 'required|integer',
-            'is_stored' => 'boolean',
-            'reg_id' => ''
+            'url' => 'required|string'
         ];
     }
 }

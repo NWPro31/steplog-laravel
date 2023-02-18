@@ -1,9 +1,7 @@
 <?php
 
-namespace App\Http\Controllers\Domain;
+namespace App\Http\Controllers\Domain\Reg;
 
-use App\Http\Resources\Domain\DomainResource;
-use App\Models\Domain;
 use App\Models\DomainReg;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Routing\Controller;
@@ -27,10 +25,10 @@ class IndexController extends Controller
      */
     public function __invoke()
     {
-        $domains = Domain::all();
+        $domainRegs = DomainReg::all();
         return response()->json([
             'success' => true,
-            'domains' => DomainResource::collection($domains)
+            'domainRegs' => $domainRegs
         ], 200);
     }
 }

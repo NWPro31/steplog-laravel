@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Domain;
 
 use App\Models\Domain;
+use App\Models\DomainReg;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Routing\Controller;
 
@@ -25,9 +26,11 @@ class EditController extends Controller
      */
     public function __invoke(Domain $domain)
     {
+        $domainRegs = DomainReg::all();
         return response()->json([
             'success' => true,
-            'domain' => $domain
+            'domain' => $domain,
+            'domainRegs' => $domainRegs
         ], 200);
     }
 }

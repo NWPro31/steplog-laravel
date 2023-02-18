@@ -1,14 +1,13 @@
 <?php
 
-namespace App\Http\Controllers\Domain;
+namespace App\Http\Controllers\Domain\Reg;
 
-use App\Http\Resources\Domain\DomainResource;
-use App\Models\Domain;
+use App\Http\Requests\DomainReg\StoreRequest;
 use App\Models\DomainReg;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Routing\Controller;
 
-class IndexController extends Controller
+class StoreController extends Controller
 {
     /**
      * Create a new controller instance.
@@ -25,12 +24,15 @@ class IndexController extends Controller
      *
      * @return JsonResponse
      */
-    public function __invoke()
+    public function __invoke(StoreRequest $request)
     {
-        $domains = Domain::all();
+        $data = $request->validated();
+
+        $domainReg = DomainReg::create($data);
+
         return response()->json([
             'success' => true,
-            'domains' => DomainResource::collection($domains)
+            'domainReg' => $domainReg
         ], 200);
     }
 }

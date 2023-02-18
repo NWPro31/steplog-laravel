@@ -10,4 +10,9 @@ class DomainReg extends Model
     use HasFactory;
 
     protected $guarded = [];
+
+    public function domains()
+    {
+        return $this->hasMany(Domain::class, 'reg_id', 'id');
+    }
 }
