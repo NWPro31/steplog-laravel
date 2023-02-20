@@ -76,6 +76,18 @@ Route::group([
     Route::post('domain/regs', 'StoreController');
 });
 
+Route::group([
+    'namespace' => 'App\Http\Controllers\Service',
+    'middleware' => 'api'
+
+], function ($router) {
+    Route::get('/services/{service}/edit', 'EditController');
+    Route::patch('/services/{service}', 'UpdateController');
+    Route::delete('/services/{service}', 'DestroyController');
+    Route::get('services', 'IndexController');
+    Route::post('services', 'StoreController');
+});
+
 /*
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
