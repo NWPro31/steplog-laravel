@@ -4,6 +4,7 @@ namespace App\Http\Controllers\OrderService;
 
 use App\Http\Requests\OrderService\StoreRequest;
 use App\Models\OrderService;
+use App\Models\StatusOrderService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Routing\Controller;
 use Tymon\JWTAuth\Contracts\Providers\Auth;
@@ -34,9 +35,17 @@ class StoreController extends Controller
 
         $service = OrderService::create($data);
 
+        $status = StatusOrderService::create(
+            [
+                'order_id' => $service->id,
+                'title' => 'Ожидает обработки'
+            ]
+        );
+
         return response()->json([
             'success' => true,
-            'service' => $service
+            'service' => $service,
+            'status' => $status
         ], 200);
     }
 }

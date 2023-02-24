@@ -25,6 +25,7 @@ class StoreRequest extends FormRequest
     {
         return [
             'service_id' => '',
+            'url' => '',
             'description' => '',
             'access' => '',
             'price' => 'required|integer'
