@@ -88,6 +88,14 @@ Route::group([
     Route::post('services', 'StoreController');
 });
 
+Route::group([
+    'namespace' => 'App\Http\Controllers\OrderService',
+    'middleware' => 'api'
+
+], function ($router) {
+    Route::post('order_services', 'StoreController');
+});
+
 /*
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
