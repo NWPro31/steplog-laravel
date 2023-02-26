@@ -28,7 +28,8 @@ class IndexController extends Controller
     public function __invoke()
     {
         //$orderServices = OrderService::all();
-        $orderServices = User::find(auth()->user()->getAuthIdentifier())->orderService;
+        if(auth()->user()->role === "admin") $orderServices = OrderService::all();
+        else $orderServices = User::find(auth()->user()->getAuthIdentifier())->orderService;
 
         return response()->json([
             'success' => true,

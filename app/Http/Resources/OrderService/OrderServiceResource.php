@@ -24,7 +24,8 @@ class OrderServiceResource extends JsonResource
             'service_id' => $this->service_id,
             'url' => $this->url,
             'service' => new ServiceResource($this->service),
-            'status' => new StatusOrderServiceResource($this->status)
+            'status' => new StatusOrderServiceResource($this->status),
+            'user' => $this->user
         ];
     }
 }
