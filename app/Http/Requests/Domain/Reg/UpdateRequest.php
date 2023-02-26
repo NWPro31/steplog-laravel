@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Requests\DomainReg;
+namespace App\Http\Requests\Domain\Reg;
 
 use Illuminate\Foundation\Http\FormRequest;
 

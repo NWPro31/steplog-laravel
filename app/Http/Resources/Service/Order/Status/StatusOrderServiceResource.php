@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Resources\StatusOrderService;
+namespace App\Http\Resources\Service\Order\Status;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 
@@ -18,7 +18,9 @@ class StatusOrderServiceResource extends JsonResource
             'id' => $this->id,
             'title' => $this->title,
             'description' => $this->description,
-            'created_at' => $this->created_at
+            'created_at' => $this->created_at,
+            'user_name' => $this->user->name,
+            'user_role' => $this->user->role
         ];
     }
 }

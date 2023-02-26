@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Http\Resources\OrderService;
+namespace App\Http\Resources\Service\Order;
 
 use App\Http\Resources\Service\ServiceResource;
-use App\Http\Resources\StatusOrderService\StatusOrderServiceResource;
+use App\Http\Resources\Service\Order\Status\StatusOrderServiceResource;
 use App\Models\StatusOrderService;
 use Illuminate\Http\Resources\Json\JsonResource;
 

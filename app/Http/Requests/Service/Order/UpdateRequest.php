@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests\DomainReg;
+namespace App\Http\Requests\Service\Order;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreRequest extends FormRequest
+class UpdateRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,8 +24,11 @@ class StoreRequest extends FormRequest
     public function rules()
     {
         return [
-            'title' => 'required|string',
-            'url' => 'required|string'
+            'service_id' => '',
+            'url' => '',
+            'description' => '',
+            'access' => '',
+            'price' => 'required|integer'
         ];
     }
 }

@@ -89,13 +89,23 @@ Route::group([
 });
 
 Route::group([
-    'namespace' => 'App\Http\Controllers\OrderService',
+    'namespace' => 'App\Http\Controllers\Service\Order',
     'middleware' => 'api'
 
 ], function ($router) {
+    Route::get('/order_services/{orderService}/edit', 'EditController');
     Route::get('/order_services/{orderService}', 'ShowController');
+    Route::patch('/order_services/{orderService}', 'UpdateController');
     Route::get('order_services', 'IndexController');
     Route::post('order_services', 'StoreController');
+});
+
+Route::group([
+    'namespace' => 'App\Http\Controllers\Service\Order\Comment',
+    'middleware' => 'api'
+
+], function ($router) {
+    Route::post('comment_order_services', 'StoreController');
 });
 
 /*

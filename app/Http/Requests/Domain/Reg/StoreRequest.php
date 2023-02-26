@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Requests\OrderService;
+namespace App\Http\Requests\Domain\Reg;
 
 use Illuminate\Foundation\Http\FormRequest;
 
@@ -24,11 +24,8 @@ class StoreRequest extends FormRequest
     public function rules()
     {
         return [
-            'service_id' => '',
-            'url' => '',
-            'description' => '',
-            'access' => '',
-            'price' => 'required|integer'
+            'title' => 'required|string',
+            'url' => 'required|string'
         ];
     }
 }

@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Http\Controllers\OrderService;
+namespace App\Http\Controllers\Service\Order;
 
-use App\Http\Requests\OrderService\StoreRequest;
+use App\Http\Requests\Service\Order\StoreRequest;
 use App\Models\OrderService;
 use App\Models\StatusOrderService;
 use Illuminate\Http\JsonResponse;

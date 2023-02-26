@@ -2,7 +2,7 @@
 
 namespace App\Http\Resources\Domain;
 
-use App\Http\Resources\DomainReg\DomainRegResource;
+use App\Http\Resources\Domain\Reg\DomainRegResource;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class DomainResource extends JsonResource

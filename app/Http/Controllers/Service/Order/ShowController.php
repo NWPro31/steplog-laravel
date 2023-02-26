@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Http\Controllers\OrderService;
+namespace App\Http\Controllers\Service\Order;
 
-use App\Http\Resources\OrderService\OrderServiceResource;
-use App\Http\Resources\StatusOrderService\StatusOrderServiceResource;
+use App\Http\Resources\Service\Order\OrderServiceResource;
+use App\Http\Resources\Service\Order\Status\StatusOrderServiceResource;
 use App\Models\OrderService;
 use App\Models\StatusOrderService;
 use App\Models\User;

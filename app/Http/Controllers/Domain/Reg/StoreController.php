@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Domain\Reg;
 
-use App\Http\Requests\DomainReg\StoreRequest;
+use App\Http\Requests\Domain\Reg\StoreRequest;
 use App\Models\DomainReg;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Routing\Controller;

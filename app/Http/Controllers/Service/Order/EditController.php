@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Http\Controllers\Domain\Reg;
+namespace App\Http\Controllers\Service\Order;
 
-use App\Http\Requests\Domain\Reg\UpdateRequest;
-use App\Models\DomainReg;
+use App\Models\OrderService;
+use App\Models\Service;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Routing\Controller;
 
-class UpdateController extends Controller
+class EditController extends Controller
 {
     /**
      * Create a new controller instance.
@@ -24,15 +24,11 @@ class UpdateController extends Controller
      *
      * @return JsonResponse
      */
-    public function __invoke(UpdateRequest $request, DomainReg $domainReg)
+    public function __invoke(OrderService $orderService)
     {
-        $data = $request->validated();
-
-        $domainReg = $domainReg->update($data);
-
         return response()->json([
             'success' => true,
-            'domainReg' => $domainReg
+            'order_service' => $orderService
         ], 200);
     }
 }
