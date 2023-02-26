@@ -93,6 +93,7 @@ Route::group([
     'middleware' => 'api'
 
 ], function ($router) {
+    Route::get('/order_services/{orderService}', 'ShowController');
     Route::get('order_services', 'IndexController');
     Route::post('order_services', 'StoreController');
 });
