@@ -105,6 +105,7 @@ Route::group([
     'middleware' => 'api'
 
 ], function ($router) {
+    Route::get('/comment_order_services/{commentOrder}', 'IndexController');
     Route::post('comment_order_services', 'StoreController');
 });
 

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Service\Order\Comment;
 
 use App\Http\Requests\Service\Order\Comment\StoreRequest;
+use App\Http\Resources\Service\Order\Comment\CommentOrderServiceResource;
 use App\Models\CommentOrderService;
 use App\Models\StatusOrderService;
 use Illuminate\Http\JsonResponse;
@@ -44,7 +45,7 @@ class StoreController extends Controller
 
         return response()->json([
             'success' => true,
-            'comment' => $comment,
+            'comment' => new CommentOrderServiceResource($comment),
             'status' => $status
         ], 200);
     }
