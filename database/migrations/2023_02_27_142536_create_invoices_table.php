@@ -21,6 +21,7 @@ return new class extends Migration
             $table->unsignedBigInteger('status_id')->nullable();
             $table->index('status_id', 'invoices_status_idx');
             $table->boolean('is_paid')->default(0);
+            $table->boolean('partial')->default(0);
             $table->index('user_id', 'invoices_user_idx');
             $table->foreign('user_id', 'invoices_user_fk')->on('users')->references('id');
             $table->unsignedBigInteger('service_order_id')->nullable();
