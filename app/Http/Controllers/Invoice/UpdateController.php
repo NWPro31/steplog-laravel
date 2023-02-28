@@ -2,13 +2,12 @@
 
 namespace App\Http\Controllers\Invoice;
 
-use App\Models\Hosting;
+use App\Http\Requests\Invoice\UpdateRequest;
 use App\Models\Invoice;
-use App\Models\StatusInvoice;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Routing\Controller;
 
-class EditController extends Controller
+class UpdateController extends Controller
 {
     /**
      * Create a new controller instance.
@@ -25,14 +24,15 @@ class EditController extends Controller
      *
      * @return JsonResponse
      */
-    public function __invoke(Invoice $invoice)
+    public function __invoke(UpdateRequest $request, Invoice $invoice)
     {
-        $status = StatusInvoice::all();
+        $data = $request->validated();
+
+        $invoice = $invoice->update($data);
 
         return response()->json([
             'success' => true,
-            'invoice' => $invoice,
-            'status' => $status
+            'invoice' => $invoice
         ], 200);
     }
 }
