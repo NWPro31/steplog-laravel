@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Service\Order\Comment;
 
 use App\Http\Resources\Service\Order\Comment\CommentOrderServiceResource;
+use App\Models\OrderService;
 use App\Models\CommentOrderService;
 use App\Models\User;
 use Illuminate\Http\JsonResponse;
@@ -25,9 +26,8 @@ class IndexController extends Controller
      *
      * @return JsonResponse
      */
-    public function __invoke(CommentOrderService $commentOrder)
+    public function __invoke(OrderService $commentOrder)
     {
-        //$orderServices = OrderService::all();
         if(auth()->user()->role === "admin") $commentOrderServices = CommentOrderService::all()->where('order_id', $commentOrder->id);
         else $commentOrderServices = User::find(auth()->user()->getAuthIdentifier())->commentOrderService;
 

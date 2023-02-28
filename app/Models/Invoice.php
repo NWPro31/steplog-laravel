@@ -15,4 +15,9 @@ class Invoice extends Model
     {
         return $this->belongsTo(OrderService::class, 'service_order_id', 'id');
     }
+
+    public function status ()
+    {
+        return $this->belongsTo(StatusInvoice::class, 'status_id', 'id');
+    }
 }

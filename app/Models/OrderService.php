@@ -23,6 +23,11 @@ class OrderService extends Model
         return $this->hasOne(StatusOrderService::class, 'order_id', 'id')->orderBy('id', 'DESC');
     }
 
+    public function invoices()
+    {
+        return $this->hasMany(Invoice::class, 'service_order_id', 'id');
+    }
+
     public function user()
     {
         return $this->belongsTo(User::class);

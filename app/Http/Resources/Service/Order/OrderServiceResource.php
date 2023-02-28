@@ -4,7 +4,6 @@ namespace App\Http\Resources\Service\Order;
 
 use App\Http\Resources\Service\ServiceResource;
 use App\Http\Resources\Service\Order\Status\StatusOrderServiceResource;
-use App\Models\StatusOrderService;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class OrderServiceResource extends JsonResource
@@ -25,7 +24,8 @@ class OrderServiceResource extends JsonResource
             'url' => $this->url,
             'service' => new ServiceResource($this->service),
             'status' => new StatusOrderServiceResource($this->status),
-            'user' => $this->user
+            'user' => $this->user,
+            'invoice' => $this->invoices
         ];
     }
 }

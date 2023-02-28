@@ -117,6 +117,15 @@ Route::group([
     Route::post('invoice_order_services', 'StoreController');
 });
 
+Route::group([
+    'namespace' => 'App\Http\Controllers\Invoice',
+    'middleware' => 'api'
+
+], function ($router) {
+    Route::get('/invoices/{invoice}/edit', 'EditController');
+    Route::get('invoices', 'IndexController');
+});
+
 /*
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
