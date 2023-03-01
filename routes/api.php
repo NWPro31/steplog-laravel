@@ -124,6 +124,7 @@ Route::group([
 ], function ($router) {
     Route::get('/invoices/{invoice}/edit', 'EditController');
     Route::patch('/invoices/{invoice}', 'UpdateController');
+    Route::get('/invoices/{invoice}', 'ShowController');
     Route::get('invoices', 'IndexController');
 });
 
