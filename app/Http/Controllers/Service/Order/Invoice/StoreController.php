@@ -29,6 +29,12 @@ class StoreController extends Controller
      */
     public function __invoke(StoreRequest $request)
     {
+        if(auth()->user()->role !== "admin") {
+            return response()->json([
+                'success' => false,
+                'message' => 'Доступ запрещен'
+            ], 403);
+        }
         $data = $request->validated();
 
         $data["user_id"] = OrderService::find($data["service_order_id"])->user_id;

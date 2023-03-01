@@ -29,6 +29,7 @@ class StoreController extends Controller
      */
     public function __invoke(StoreRequest $request)
     {
+
         $data = $request->validated();
 
         $data["user_id"] = auth()->user()->getAuthIdentifier();
@@ -38,6 +39,7 @@ class StoreController extends Controller
         $status = StatusOrderService::create(
             [
                 'order_id' => $service->id,
+                'user_id' => $data["user_id"],
                 'title' => 'Ожидает обработки'
             ]
         );

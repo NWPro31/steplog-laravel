@@ -27,6 +27,13 @@ class UpdateController extends Controller
      */
     public function __invoke(UpdateRequest $request, OrderService $orderService)
     {
+        if(auth()->user()->role !== "admin") {
+            return response()->json([
+                'success' => false,
+                'message' => 'Доступ запрещен'
+            ], 403);
+        }
+
         $data = $request->validated();
         $orderId = $orderService->id;
 

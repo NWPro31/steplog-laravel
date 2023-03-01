@@ -26,6 +26,12 @@ class EditController extends Controller
      */
     public function __invoke(OrderService $orderService)
     {
+        if(auth()->user()->role !== "admin") {
+            return response()->json([
+                'success' => false,
+                'message' => 'Доступ запрещен'
+            ], 403);
+        }
         return response()->json([
             'success' => true,
             'order_service' => $orderService
