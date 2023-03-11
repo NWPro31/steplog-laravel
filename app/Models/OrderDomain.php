@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class ContactRuDomain extends Model
+class OrderDomain extends Model
 {
     use HasFactory;
 

@@ -128,6 +128,14 @@ Route::group([
     Route::get('invoices', 'IndexController');
 });
 
+Route::group([
+    'namespace' => 'App\Http\Controllers\Domain\Order',
+    'middleware' => 'api'
+
+], function ($router) {
+    Route::post('order_domains', 'StoreController');
+});
+
 /*
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
