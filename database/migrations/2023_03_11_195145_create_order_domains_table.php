@@ -24,7 +24,7 @@ return new class extends Migration
             $table->unsignedBigInteger('contact_ru_id');
             $table->index('contact_ru_id', 'order_domains_contact_ru_idx');
             $table->foreign('contact_ru_id', 'order_domains_contact_ru_fk')->on('contact_ru_domains')->references('id');
-            $table->unsignedBigInteger('url');
+            $table->string('url');
             $table->unsignedBigInteger('price');
             $table->timestamps();
             $table->softDeletes();
