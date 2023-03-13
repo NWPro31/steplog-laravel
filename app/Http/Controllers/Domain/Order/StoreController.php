@@ -32,8 +32,10 @@ class StoreController extends Controller
         $data["user_id"] = auth()->user()->getAuthIdentifier();
         $url = $data["url"];
         $domain_id = $data["domain_id"];
+        $ns = json_encode($data["ns"]);
         unset($data["url"]);
         unset($data["domain_id"]);
+        unset($data["ns"]);
         $contact_ru = ContactRuDomain::create($data);
 
         $data["price"] = Domain::find($domain_id)->price;
@@ -44,7 +46,8 @@ class StoreController extends Controller
                 'domain_id' => $domain_id,
                 'contact_ru_id' => $contact_ru->id,
                 'url' => $url,
-                'price' => $data["price"]
+                'price' => $data["price"],
+                'ns' => $ns
             ]
         );
 

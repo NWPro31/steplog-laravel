@@ -44,10 +44,7 @@ class StoreRequest extends FormRequest
             'passport_code' => 'required|string',
             'passport_number' => 'required|string',
             'passport_org' => 'required|string',
-            'ns1' => '',
-            'ns2' => '',
-            'ns3' => '',
-            'ns4' => ''
+            'ns' => ''
         ];
     }
 }

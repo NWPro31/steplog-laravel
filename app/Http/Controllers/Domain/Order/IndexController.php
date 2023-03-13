@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Domain\Order;
 
+use App\Http\Resources\Domain\Order\OrderDomainResource;
 use App\Http\Resources\Service\Order\OrderServiceResource;
 use App\Models\OrderDomain;
 use App\Models\OrderService;
@@ -34,7 +35,7 @@ class IndexController extends Controller
 
         return response()->json([
             'success' => true,
-            'order_domains' => $orderDomains
+            'order_domains' => OrderDomainResource::collection($orderDomains)
         ], 200);
     }
 }
