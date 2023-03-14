@@ -1,9 +1,11 @@
 Установка 
 
 Mysql
+
 Создание базы данных и пользователя
 
 Laravel
+
 git clone https://github.com/NWPro31/steplog-laravel.git
 
 composer install
