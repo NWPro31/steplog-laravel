@@ -20,7 +20,8 @@ class OrderDomainResource extends JsonResource
             'domain_id' => $this->domain_id,
             'ns' => json_decode($this->ns),
             'price' => $this->price,
-            'url' => $this->url
+            'url' => $this->url,
+            'status' => $this->status
         ];
     }
 }

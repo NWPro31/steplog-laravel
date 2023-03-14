@@ -11,4 +11,8 @@ class OrderDomain extends Model
 
     protected $guarded = [];
 
+    public function status ()
+    {
+        return $this->belongsTo(StatusOrderDomain::class);
+    }
 }
