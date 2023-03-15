@@ -137,6 +137,14 @@ Route::group([
     Route::post('order_domains', 'StoreController');
 });
 
+Route::group([
+    'namespace' => 'App\Http\Controllers\Domain\ContactRu',
+    'middleware' => 'api'
+
+], function ($router) {
+    Route::get('contact_ru_domains', 'IndexController');
+});
+
 /*
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
