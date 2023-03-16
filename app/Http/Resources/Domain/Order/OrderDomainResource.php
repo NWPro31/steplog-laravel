@@ -21,7 +21,8 @@ class OrderDomainResource extends JsonResource
             'ns' => json_decode($this->ns),
             'price' => $this->price,
             'url' => $this->url,
-            'status' => $this->status
+            'status' => $this->status,
+            'reg_before' => $this->reg_before
         ];
     }
 }

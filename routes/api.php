@@ -133,6 +133,7 @@ Route::group([
     'middleware' => 'api'
 
 ], function ($router) {
+    Route::patch('/order_domains/{orderDomain}', 'UpdateController');
     Route::get('/order_domains/{orderDomain}', 'ShowController');
     Route::get('order_domains', 'IndexController');
     Route::post('order_domains', 'StoreController');

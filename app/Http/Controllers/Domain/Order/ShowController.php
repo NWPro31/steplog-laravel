@@ -7,6 +7,7 @@ use App\Http\Resources\Service\Order\OrderServiceResource;
 use App\Http\Resources\Service\Order\Status\StatusOrderServiceResource;
 use App\Models\OrderDomain;
 use App\Models\OrderService;
+use App\Models\StatusOrderDomain;
 use App\Models\StatusOrderService;
 use App\Models\User;
 use Illuminate\Http\JsonResponse;
@@ -31,10 +32,11 @@ class ShowController extends Controller
      */
     public function __invoke(OrderDomain $orderDomain)
     {
-
+        $statusOrderDomain = StatusOrderDomain::all();
         return response()->json([
             'success' => true,
-            'order_domain' => new OrderDomainResource($orderDomain)
+            'order_domain' => new OrderDomainResource($orderDomain),
+            'status' => $statusOrderDomain
         ], 200);
     }
 }
