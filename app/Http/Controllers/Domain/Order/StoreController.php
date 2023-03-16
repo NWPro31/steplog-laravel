@@ -9,6 +9,7 @@ use App\Models\Invoice;
 use App\Models\OrderDomain;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Routing\Controller;
+use Illuminate\Support\Facades\DB;
 
 class StoreController extends Controller
 {
@@ -30,38 +31,51 @@ class StoreController extends Controller
     public function __invoke(StoreRequest $request)
     {
         $data = $request->validated();
-        $data["user_id"] = auth()->user()->getAuthIdentifier();
-        $url = $data["url"];
-        $domain_id = $data["domain_id"];
-        $ns = json_encode($data["ns"]);
-        unset($data["url"]);
-        unset($data["domain_id"]);
-        unset($data["ns"]);
-        $contact_ru = ContactRuDomain::create($data);
+        try
+        {
+            Db::beginTransaction();
+            $data["user_id"] = auth()->user()->getAuthIdentifier();
+            $url = $data["url"];
+            $domain_id = $data["domain_id"];
+            $ns = json_encode($data["ns"]);
+            unset($data["url"], $data["domain_id"], $data["ns"]);
 
-        $data["price"] = Domain::find($domain_id)->price;
+            $contact_ru = ContactRuDomain::create($data);
 
-        $order_domain = OrderDomain::create(
-            [
-                'user_id' => $data["user_id"],
-                'domain_id' => $domain_id,
-                'contact_ru_id' => $contact_ru->id,
-                'url' => $url,
-                'price' => $data["price"],
-                'ns' => $ns,
-                'status_id' => 1
-            ]
-        );
+            $data["price"] = Domain::find($domain_id)->price;
 
-        $invoice = Invoice::create(
-            [
-                'domain_order_id' => $order_domain->id,
-                'title' => 'Оплата регистрации домена '.$url,
-                'user_id' => $data["user_id"],
-                'amount' => $data["price"],
-                'status_id' => 1
-            ]
-        );
+            $order_domain = OrderDomain::create(
+                [
+                    'user_id' => $data["user_id"],
+                    'domain_id' => $domain_id,
+                    'contact_ru_id' => $contact_ru->id,
+                    'url' => $url,
+                    'price' => $data["price"],
+                    'ns' => $ns,
+                    'status_id' => 1
+                ]
+            );
+
+            $invoice = Invoice::create(
+                [
+                    'domain_order_id' => $order_domain->id,
+                    'title' => 'Регистрация домена '.$url,
+                    'user_id' => $data["user_id"],
+                    'amount' => $data["price"],
+                    'status_id' => 1
+                ]
+            );
+
+            Db::commit();
+        }
+        catch (\Exception $exception)
+        {
+            Db::rollBack();
+            return response()->json([
+                'success' => false,
+                'message' => $exception->getMessage()
+            ], 500);
+        }
 
         return response()->json([
             'success' => true,
