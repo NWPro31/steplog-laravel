@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\StatusChangeDomainNs;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -14,11 +15,15 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // \App\Models\User::factory(10)->create();
+        $statusChangeNs = ['Обрабатывается', 'Активен', 'Ошибка', 'Отменен'];
 
-        // \App\Models\User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
+        collect($statusChangeNs)->each(function($status) {
+            StatusChangeDomainNs::factory()->create(
+                [
+                    'title' => $status
+                ]
+            );
+        });
+
     }
 }
