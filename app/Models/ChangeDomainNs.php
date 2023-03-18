@@ -10,4 +10,9 @@ class ChangeDomainNs extends Model
     use HasFactory;
 
     protected $guarded = [];
+
+    public function status ()
+    {
+        return $this->belongsTo(StatusChangeDomainNs::class);
+    }
 }

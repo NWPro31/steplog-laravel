@@ -1,12 +1,9 @@
 <?php
 
-namespace App\Http\Controllers\Domain\Order;
+namespace App\Http\Controllers\Domain\ChangeNs;
 
-use App\Http\Resources\Domain\Order\ChangeNsDomainResource;
-use App\Http\Resources\Domain\Order\OrderDomainResource;
-use App\Http\Resources\Service\Order\OrderServiceResource;
-use App\Models\OrderDomain;
-use App\Models\OrderService;
+use App\Http\Resources\Domain\ChangeNs\ChangeNsDomainResource;
+use App\Models\ChangeDomainNs;
 use App\Models\User;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Routing\Controller;
@@ -31,12 +28,11 @@ class IndexController extends Controller
     public function __invoke()
     {
         //$orderServices = OrderService::all();
-        if(auth()->user()->role === "admin") $orderDomains = OrderDomain::all();
-        else $orderDomains = User::find(auth()->user()->getAuthIdentifier())->orderDomain;
-
+        if(auth()->user()->role === "admin") $changeDomainNs = ChangeDomainNs::all();
+        else $changeDomainNs = User::find(auth()->user()->getAuthIdentifier())->changeDomainNs;
         return response()->json([
             'success' => true,
-            'order_domains' => OrderDomainResource::collection($orderDomains)
+            'change_domain_ns' => ChangeNsDomainResource::collection($changeDomainNs)
         ], 200);
     }
 }

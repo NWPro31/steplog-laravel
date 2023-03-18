@@ -152,6 +152,7 @@ Route::group([
     'middleware' => 'api'
 
 ], function ($router) {
+    Route::get('change_ns_domain', 'IndexController');
     Route::post('change_ns_domain', 'StoreController');
 });
 

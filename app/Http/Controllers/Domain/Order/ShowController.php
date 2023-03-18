@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Domain\Order;
 
-use App\Http\Resources\Domain\Order\OrderDomainResource;
+use App\Http\Resources\Domain\Order\ChangeNsDomainResource;
 use App\Http\Resources\Service\Order\OrderServiceResource;
 use App\Http\Resources\Service\Order\Status\StatusOrderServiceResource;
 use App\Models\OrderDomain;
@@ -35,7 +35,7 @@ class ShowController extends Controller
         $statusOrderDomain = StatusOrderDomain::all();
         return response()->json([
             'success' => true,
-            'order_domain' => new OrderDomainResource($orderDomain),
+            'order_domain' => new ChangeNsDomainResource($orderDomain),
             'status' => $statusOrderDomain
         ], 200);
     }
