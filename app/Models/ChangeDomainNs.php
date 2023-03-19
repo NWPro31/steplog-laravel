@@ -15,4 +15,11 @@ class ChangeDomainNs extends Model
     {
         return $this->belongsTo(StatusChangeDomainNs::class);
     }
+
+    public function orderDomain ()
+    {
+        return $this->belongsTo(OrderDomain::class);
+    }
+
+
 }

@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources\Domain\Order;
 
+use App\Http\Resources\Domain\ChangeNs\ChangeNsDomainResource;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class OrderDomainResource extends JsonResource
@@ -22,7 +23,8 @@ class OrderDomainResource extends JsonResource
             'price' => $this->price,
             'url' => $this->url,
             'status' => $this->status,
-            'reg_before' => $this->reg_before
+            'reg_before' => $this->reg_before,
+            'change_ns' => new ChangeNsDomainResource($this->changeNs)
         ];
     }
 }

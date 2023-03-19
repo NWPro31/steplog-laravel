@@ -17,6 +17,7 @@ class ChangeNsDomainResource extends JsonResource
         return [
             'id' => $this->id,
             'order_domain_id' => $this->order_domain_id,
+            'order_domain' => $this->orderDomain,
             'status_id' => $this->status_id,
             'status' => $this->status,
             'ns' => json_decode($this->ns)

@@ -152,8 +152,17 @@ Route::group([
     'middleware' => 'api'
 
 ], function ($router) {
+    Route::patch('/change_ns_domain/{statusChangeDomainNs}', 'UpdateController');
     Route::get('change_ns_domain', 'IndexController');
     Route::post('change_ns_domain', 'StoreController');
+});
+
+Route::group([
+    'namespace' => 'App\Http\Controllers\Domain\ChangeNs\Status',
+    'middleware' => 'api'
+
+], function ($router) {
+    Route::get('change_ns_status', 'IndexController');
 });
 
 /*

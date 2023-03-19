@@ -15,4 +15,9 @@ class OrderDomain extends Model
     {
         return $this->belongsTo(StatusOrderDomain::class);
     }
+
+    public function changeNs ()
+    {
+        return $this->hasOne(ChangeDomainNs::class)->orderBy('id', 'DESC');
+    }
 }
