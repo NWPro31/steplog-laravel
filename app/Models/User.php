@@ -65,6 +65,11 @@ class User extends Authenticatable implements JWTSubject
         return $this->hasMany(OrderDomain::class);
     }
 
+    public function orderHosting()
+    {
+        return $this->hasMany(OrderHosting::class);
+    }
+
     public function changeDomainNs()
     {
         return $this->hasMany(ChangeDomainNs::class);

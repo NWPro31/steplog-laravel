@@ -14,6 +14,8 @@ cp .env.example .env
 
 Указать данные для доступа к базе данных
 
+php artisan key:generate
+
 php artisan jwt:secret
 
 php artisan migrate

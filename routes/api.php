@@ -165,6 +165,15 @@ Route::group([
     Route::get('change_ns_status', 'IndexController');
 });
 
+Route::group([
+    'namespace' => 'App\Http\Controllers\Hosting\Order',
+    'middleware' => 'api'
+
+], function ($router) {
+    Route::get('order_hosting', 'IndexController');
+    Route::post('order_hosting', 'StoreController');
+});
+
 /*
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
