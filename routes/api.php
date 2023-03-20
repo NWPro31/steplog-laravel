@@ -170,8 +170,17 @@ Route::group([
     'middleware' => 'api'
 
 ], function ($router) {
+    Route::patch('/order_hosting/{statusHosting}', 'UpdateController');
     Route::get('order_hosting', 'IndexController');
     Route::post('order_hosting', 'StoreController');
+});
+
+Route::group([
+    'namespace' => 'App\Http\Controllers\Hosting\Order\Status',
+    'middleware' => 'api'
+
+], function ($router) {
+    Route::get('change_hosting_status', 'IndexController');
 });
 
 /*
