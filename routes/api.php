@@ -183,6 +183,15 @@ Route::group([
     Route::get('change_hosting_status', 'IndexController');
 });
 
+Route::group([
+    'namespace' => 'App\Http\Controllers\Ticket',
+    'middleware' => 'api'
+
+], function ($router) {
+    Route::get('tickets', 'IndexController');
+    Route::post('tickets', 'StoreController');
+});
+
 /*
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
