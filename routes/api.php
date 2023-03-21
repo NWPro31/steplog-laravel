@@ -192,6 +192,14 @@ Route::group([
     Route::post('tickets', 'StoreController');
 });
 
+Route::group([
+    'namespace' => 'App\Http\Controllers\Ticket\Message',
+    'middleware' => 'api'
+
+], function ($router) {
+    Route::post('ticket_messages', 'ShowController');
+});
+
 /*
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();

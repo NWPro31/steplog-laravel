@@ -4,7 +4,7 @@ namespace App\Http\Resources\Ticket;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class InvoiceResource extends JsonResource
+class TicketResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -14,18 +14,18 @@ class InvoiceResource extends JsonResource
      */
     public function toArray($request)
     {
+        if($this->service_order_id!==null) $order = $this->orderHosting;
+        elseif($this->domain_order_id!==null) $order = $this->orderHosting;
+        elseif($this->hosting_order_id!==null) $order = $this->orderHosting;
+        else $order = null;
         return [
             'id' => $this->id,
             'title' => $this->title,
-            'created_at' => $this->created_at,
-            'amount' => $this->amount,
-            'is_paid' => $this->is_paid,
             'service_order_id' => $this->service_order_id,
             'domain_order_id' => $this->domain_order_id,
             'hosting_order_id' => $this->hosting_order_id,
-            'partial' => $this->partial,
-            'user_id' => $this->user_id,
-            'status' => $this->status
+            'order' => $order,
+            'last_message' => $this->lastMessage
         ];
     }
 }

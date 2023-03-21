@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Ticket;
 
 use App\Http\Resources\Invoice\InvoiceResource;
+use App\Http\Resources\Ticket\TicketResource;
 use App\Models\Invoice;
 use App\Models\Ticket;
 use App\Models\User;
@@ -33,7 +34,7 @@ class IndexController extends Controller
 
         return response()->json([
             'success' => true,
-            'tickets' => $tickets
+            'tickets' => TicketResource::collection($tickets)
         ], 200);
     }
 }

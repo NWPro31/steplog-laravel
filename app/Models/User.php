@@ -85,8 +85,19 @@ class User extends Authenticatable implements JWTSubject
         return $this->hasMany(ContactRuDomain::class);
     }
 
-    public function commentOrderService(){
+    public function commentOrderService()
+    {
         return $this->hasMany(CommentOrderService::class);
+    }
+
+    public function messageTicket()
+    {
+        return $this->hasMany(MessageTicket::class);
+    }
+
+    public function ticket()
+    {
+        return $this->hasMany(Ticket::class);
     }
 
     public function getJWTIdentifier()
