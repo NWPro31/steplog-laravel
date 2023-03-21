@@ -32,20 +32,28 @@ class ShowController extends Controller
      *
      * @return JsonResponse
      */
-    public function __invoke(ShowRequest $request)
+    public function __invoke(Ticket $ticketId)
     {
-        $data = $request->validated();
-
-        //$orderServices = OrderService::all();
-        //if(auth()->user()->role === "admin") $orderServices = OrderService::all();
-        //else $orderServices = User::find(auth()->user()->getAuthIdentifier())->orderService;
-
-        if(auth()->user()->role === "admin") $messageTicket = MessageTicket::where('ticket_id', $data["ticket_id"])->get();
-        else {
-            $ticket = Ticket::where([['id', $data["ticket_id"]], ['user_id', auth()->user()->getAuthIdentifier()]])->first();
-            $messageTicket = MessageTicket::where('ticket_id', $ticket->id)->get();
+        try {
+            if(auth()->user()->role === "admin" || auth()->user()->getAuthIdentifier() === $ticketId->user_id)
+            {
+                $messageTicket = MessageTicket::where('ticket_id', $ticketId->id)->get();
+            }
+            else
+            {
+                return response()->json([
+                    'success' => false,
+                    'message' => 'Access denied'
+                ], 403);
+            }
         }
-
+        catch (\Exception $exception)
+        {
+            return response()->json([
+                'success' => false,
+                'message' => $exception->getMessage()
+            ], 500);
+        }
 
         return response()->json([
             'success' => true,

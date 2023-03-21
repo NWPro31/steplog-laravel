@@ -197,7 +197,8 @@ Route::group([
     'middleware' => 'api'
 
 ], function ($router) {
-    Route::post('ticket_messages', 'ShowController');
+    Route::get('/ticket_messages/{ticketId}', 'ShowController');
+    Route::post('ticket_messages', 'StoreController');
 });
 
 /*
