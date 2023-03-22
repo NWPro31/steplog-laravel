@@ -6,6 +6,7 @@ use App\Http\Requests\Ticket\ShowRequest;
 use App\Http\Resources\Service\Order\OrderServiceResource;
 use App\Http\Resources\Service\Order\Status\StatusOrderServiceResource;
 use App\Http\Resources\Ticket\Message\TicketMessagesResource;
+use App\Http\Resources\Ticket\TicketResource;
 use App\Models\MessageTicket;
 use App\Models\OrderService;
 use App\Models\StatusOrderService;
@@ -57,6 +58,7 @@ class ShowController extends Controller
 
         return response()->json([
             'success' => true,
+            'ticket' => new TicketResource($ticketId),
             'ticket_messages' => TicketMessagesResource::collection($messageTicket)
         ], 200);
     }
