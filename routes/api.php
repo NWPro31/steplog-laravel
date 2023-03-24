@@ -35,7 +35,8 @@ Route::group([
     'middleware' => 'api'
 
 ], function ($router) {
-
+    Route::patch('customer_update', 'UpdateController');
+    Route::patch('password_update', 'ChangePasswordController');
     Route::post('users', 'IndexController');
 
 });
@@ -126,6 +127,7 @@ Route::group([
     Route::patch('/invoices/{invoice}', 'UpdateController');
     Route::get('/invoices/{invoice}', 'ShowController');
     Route::get('invoices', 'IndexController');
+    Route::post('invoices', 'StoreController');
 });
 
 Route::group([
