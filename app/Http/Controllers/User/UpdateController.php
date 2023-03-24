@@ -27,6 +27,14 @@ class UpdateController extends Controller
     public function __invoke(UpdateRequest $request)
     {
         $data = $request->validated();
+
+        if($data["image"] !== null)
+        {
+            $imageName = time().'.'.$data["image"]->extension();
+            $data["image"]->storeAs('images', $imageName);
+            $data["image_url"] = $imageName;
+        }
+        unset($data["image"]);
         $user = User::find(auth()->user()->getAuthIdentifier());
         $user->update($data);
 

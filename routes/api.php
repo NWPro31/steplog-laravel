@@ -35,7 +35,7 @@ Route::group([
     'middleware' => 'api'
 
 ], function ($router) {
-    Route::patch('customer_update', 'UpdateController');
+    Route::post('customer_update', 'UpdateController');
     Route::patch('password_update', 'ChangePasswordController');
     Route::post('users', 'IndexController');
 

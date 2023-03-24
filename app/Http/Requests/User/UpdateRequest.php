@@ -6,6 +6,7 @@ use Illuminate\Foundation\Http\FormRequest;
 
 class UpdateRequest extends FormRequest
 {
+
     /**
      * Determine if the user is authorized to make this request.
      *
@@ -26,7 +27,8 @@ class UpdateRequest extends FormRequest
         return [
             'name' => 'required|string',
             'email' => 'string',
-            'phone' => 'string|nullable'
+            'phone' => 'string|nullable',
+            'image' => 'nullable|image|mimes:png,jpg,jpeg'
         ];
     }
 }
