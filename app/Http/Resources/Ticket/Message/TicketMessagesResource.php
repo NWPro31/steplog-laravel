@@ -19,7 +19,8 @@ class TicketMessagesResource extends JsonResource
             'message' => $this->message,
             'updated_at' => $this->updated_at,
             'user_name' => $this->user->name,
-            'user_role' => $this->user->role
+            'user_role' => $this->user->role,
+            'image_url' => $this->user->image_url
         ];
     }
 }
