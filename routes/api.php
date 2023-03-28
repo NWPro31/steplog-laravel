@@ -173,6 +173,7 @@ Route::group([
 
 ], function ($router) {
     Route::patch('/order_hosting/{statusHosting}', 'UpdateController');
+    Route::get('/order_hosting/{orderHosting}', 'ShowController');
     Route::get('order_hosting', 'IndexController');
     Route::post('order_hosting', 'StoreController');
 });
