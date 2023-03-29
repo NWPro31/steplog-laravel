@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources\Hosting\Order;
 
+use App\Models\Hosting;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class OrderHostingResource extends JsonResource
@@ -14,6 +15,7 @@ class OrderHostingResource extends JsonResource
      */
     public function toArray($request)
     {
+        $tarifs = Hosting::all();
         return [
             'id' => $this->id,
             'hosting_id' => $this->hosting_id,
@@ -22,7 +24,8 @@ class OrderHostingResource extends JsonResource
             'url' => $this->url,
             'status' => $this->status,
             'status_id' => $this->status_id,
-            'hosting' => $this->hosting
+            'hosting' => $this->hosting,
+            'tarifs' => $tarifs
         ];
     }
 }
